@@ -227,12 +227,30 @@ var fs=require("fs");
 
 // .then(
    
- function moviefind() {
-    const [,, ...args] = process.argv;
-//const movie = args.toString();
-const movie = process.argv[2];
+//  function moviefind() {
+//     const [,, ...args] = process.argv;
+// //const movie = args.toString();
+// const movie = process.argv[2];
    
-    var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy";
+//     var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy";
+
+// axios.get(URL).then(function(response){
+//     // var jsonData=response.data;
+//     console.log(response);
+//     // console.log(process.argv[2]);
+//     // var movieData=[jsonData.movieName];
+//     //fs.appendFile("log.txt", movieData);
+// })}
+
+// moviefind();
+
+
+function concertfind() {
+//     const [,, ...args] = process.argv;
+// //const movie = args.toString();
+// const band = process.argv[2];
+   
+    var URL= "https://api.seatgeek.com/2/events/739515?callback=fireEvent&client_id=MTg3MjgzNjl8MTU3MDEzMzI3My4wNg";
 
 axios.get(URL).then(function(response){
     // var jsonData=response.data;
@@ -242,4 +260,7 @@ axios.get(URL).then(function(response){
     //fs.appendFile("log.txt", movieData);
 })}
 
-moviefind();
+concertfind();
+
+
+
