@@ -210,39 +210,27 @@
 
 var axios=require("axios");
 var fs=require("fs");
+var spotify=require("node-spotify-api");
 
 
 
-// var inquirer= require("inquirer");
-
-// inquirer
-//   .prompt([
-    
-//     {
-//       type: "input",
-//       message: "Search for a movie",
-//       name : "movie"
-//     }
-// ])
-
-// .then(
    
-//  function moviefind() {
-//     const [,, ...args] = process.argv;
-// //const movie = args.toString();
-// const movie = process.argv[2];
+ function moviefind() {
+    const [,, ...args] = process.argv;
+//const movie = args.toString();
+const movie = process.argv[2];
    
-//     var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy";
+    var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy";
 
-// axios.get(URL).then(function(response){
-//     // var jsonData=response.data;
-//     console.log(response);
-//     // console.log(process.argv[2]);
-//     // var movieData=[jsonData.movieName];
-//     //fs.appendFile("log.txt", movieData);
-// })}
+axios.get(URL).then(function(response){
+    // var jsonData=response.data;
+    console.log(response);
+    // console.log(process.argv[2]);
+    // var movieData=[jsonData.movieName];
+    //fs.appendFile("log.txt", movieData);
+})}
 
-// moviefind();
+moviefind();
 
 
 function concertfind() {
@@ -262,5 +250,20 @@ axios.get(URL).then(function(response){
 
 concertfind();
 
+function songfind() {
+//   spotify.search({type: 'track', query:"Heal"}, function(data){
+// var songData = data.tracks.items;
+// console.log(songData.artists.name)
+//   })
+
+    var URL= "https://api.spotify.com/v1/artists/{Jackson}/top-tracks&client_id=403644a7337c4fcdb937485942a24aeb";
+
+    axios.get(URL).then(function(response){
+        // var jsonData=response.data;
+        console.log(response);
+
+})}
+
+songfind();
 
 
