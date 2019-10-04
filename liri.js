@@ -210,6 +210,7 @@
 
 var axios=require("axios");
 var fs=require("fs");
+require("dotenv").config();
 var Spotify = require('node-spotify-api');
 
 
