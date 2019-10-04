@@ -210,8 +210,7 @@
 
 var axios=require("axios");
 var fs=require("fs");
-var spotify=require("node-spotify-api");
-
+var Spotify = require('node-spotify-api');
 
 
    
@@ -250,20 +249,27 @@ axios.get(URL).then(function(response){
 
 concertfind();
 
+//After trying to code this myself and facing difficulties, I decided
+//to use heavily the examples from the node-spotify-api Readme. Also,
+//I stopped using Axios because I was not getting satisfactory results. 
+
 function songfind() {
-//   spotify.search({type: 'track', query:"Heal"}, function(data){
-// var songData = data.tracks.items;
-// console.log(songData.artists.name)
-//   })
 
-    var URL= "https://api.spotify.com/v1/artists/{Jackson}/top-tracks&client_id=403644a7337c4fcdb937485942a24aeb";
 
-    axios.get(URL).then(function(response){
-        // var jsonData=response.data;
-        console.log(response);
-
-})}
-
+var spotify = new Spotify({
+  id: "146cfb3288d84ebb84e80e5b996c5c7a",
+  secret: "73a5209fae2044c1ace88b903aeb9e75"
+});
+ 
+spotify.search({ type: 'track', query: 'Thriller' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+ 
+console.log(data); 
+console.log(JSON.stringify(data, null, 2));
+		
+		// logOutput("Spotify Preview URL: " + data.preview_url);
+		// logOutput("Album Name: " + data.album.name);
+})};
 songfind();
-
-
