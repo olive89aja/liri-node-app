@@ -6,8 +6,10 @@ var Spotify = require('node-spotify-api');
 
  function moviefind() {
     const [,, ...args] = process.argv;
-//const movie = args.toString();
-const movie = process.argv[2];
+
+      const movie = process.argv.slice(2);
+
+
    
     var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy";
 
