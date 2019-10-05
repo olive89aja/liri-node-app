@@ -210,7 +210,7 @@
 
 var axios=require("axios");
 var fs=require("fs");
-require("dotenv").config();
+require('dotenv').config();
 var Spotify = require('node-spotify-api');
 
 
@@ -262,15 +262,18 @@ var spotify = new Spotify({
   secret: "73a5209fae2044c1ace88b903aeb9e75"
 });
  
-spotify.search({ type: 'track', query: 'Thriller' }, function(err, data) {
+spotify.search({ type: 'track', query: 'Thriller', limit: 1 }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
  
-console.log(data); 
-console.log(JSON.stringify(data, null, 2));
-		
-		// logOutput("Spotify Preview URL: " + data.preview_url);
-		// logOutput("Album Name: " + data.album.name);
+
+//console.log(JSON.stringify(data, null, 2));
+        console.log("Artist: " + "Michael Jackson");
+        console.log("Song: " + data.tracks.items[0].name);
+        console.log("Spotify URL: " + data.tracks.items[0].preview_url);
+        console.log("Album Name:" + data.tracks.items[0].album.name)
+	
 })};
+
 songfind();
