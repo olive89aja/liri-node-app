@@ -243,18 +243,22 @@ function concertfind() {
 // //const movie = args.toString();
 // const band = process.argv[2];
    
-    var URL= "https://api.seatgeek.com/2/events/4556935?callback=fireEvent&client_id=MTg3MjgzNjl8MTU3MDEzMzI3My4wNg";
+    var URL= "https://api.seatgeek.com/2/events?performers.slug=bob-dylan&client_id=MTg3MjgzNjl8MTU3MDEzMzI3My4wNg";
 
-axios.get(URL).then(function(fireEvent){
-    // var jsonData=response.data;
-    console.log(fireEvent.stats);
+axios.get(URL).then(function(response){
     
-    // console.log(process.argv[2]);
-    // var movieData=[jsonData.movieName];
-    //fs.appendFile("log.txt", movieData);
+    console.log(JSON.stringify(response.data.events[0].title, null, 10));
+    console.log(JSON.stringify(response.data.events[0].datetime_local, null, 10));
+  
 })}
 
 concertfind();
+
+// Name of the venue
+// Venue location
+
+
+
 
 //After trying to code this myself and facing difficulties, I decided
 //to use heavily the examples from the node-spotify-api Readme. Also,
@@ -266,7 +270,7 @@ function songfind() {
 var spotify = new Spotify({
   id: "146cfb3288d84ebb84e80e5b996c5c7a",
   secret: "73a5209fae2044c1ace88b903aeb9e75"
-});
+}) ;
  
 spotify.search({ type: 'track', query: 'Thriller', limit: 1 }, function(err, data) {
   if (err) {
