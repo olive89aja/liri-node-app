@@ -1,6 +1,6 @@
-var axios=require("axios");
-var fs=require("fs");
-var keys=require("./keys.js");
+var axios = require("axios");
+var fs = require("fs");
+var keys = require("./keys.js");
 require('dotenv').config();
 var Spotify = require('node-spotify-api');
 
@@ -9,7 +9,7 @@ var Spotify = require('node-spotify-api');
 
       const movie = process.argv.slice(2);
 
-    var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey";
+    var URL= "http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey="+keys.omdb.apikey;
 
 axios.get(URL).then(function(response){
     
@@ -29,7 +29,7 @@ moviefind();
 function concertfind() {
 
    
-    var URL= "https://api.seatgeek.com/2/events?performers.slug=bob-dylan&client_id";
+    var URL= "https://api.seatgeek.com/2/events?performers.slug=bob-dylan&client_id="+keys.seatgeek.client_id;
 
 axios.get(URL).then(function(response){
     
@@ -48,10 +48,9 @@ concertfind();
 
 function songfind() {
 
-var spotify = new Spotify({
-  id,
-  secret
-});
+var spotify = new Spotify(
+  keys.spotify
+);
  
 spotify.search({ type: 'track', query: 'Thriller', limit: 1 }, function(err, data) {
   if (err) {
