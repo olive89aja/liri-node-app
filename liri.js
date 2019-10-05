@@ -213,8 +213,6 @@ var fs=require("fs");
 require('dotenv').config();
 var Spotify = require('node-spotify-api');
 
-
-   
  function moviefind() {
     const [,, ...args] = process.argv;
 //const movie = args.toString();
@@ -224,13 +222,20 @@ const movie = process.argv[2];
 
 axios.get(URL).then(function(response){
     // var jsonData=response.data;
-    console.log(response);
-    // console.log(process.argv[2]);
-    // var movieData=[jsonData.movieName];
+    console.log(response.data.Title);
+    console.log(response.data.Year);
+    console.log(JSON.stringify(response.data.Ratings[0], null, 2));
+    console.log(JSON.stringify(response.data.Ratings[1], null, 2));
+    console.log(response.data.Country);
+    console.log(response.data.Language);
+    console.log(response.data.Plot);
+    console.log(response.data.Actors);
     //fs.appendFile("log.txt", movieData);
 })}
 
 moviefind();
+
+// * Actors in the movie.
 
 
 function concertfind() {
@@ -238,11 +243,12 @@ function concertfind() {
 // //const movie = args.toString();
 // const band = process.argv[2];
    
-    var URL= "https://api.seatgeek.com/2/events/739515?callback=fireEvent&client_id=MTg3MjgzNjl8MTU3MDEzMzI3My4wNg";
+    var URL= "https://api.seatgeek.com/2/events/4556935?callback=fireEvent&client_id=MTg3MjgzNjl8MTU3MDEzMzI3My4wNg";
 
-axios.get(URL).then(function(response){
+axios.get(URL).then(function(fireEvent){
     // var jsonData=response.data;
-    console.log(response);
+    console.log(fireEvent.stats);
+    
     // console.log(process.argv[2]);
     // var movieData=[jsonData.movieName];
     //fs.appendFile("log.txt", movieData);
